@@ -1,0 +1,16 @@
+[Unit]
+Description=WISEBox Logger Service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+ExecStartPre=/sbin/iw dev wlan0 interface add wlan0mon type monitor
+ExecStartPre=/sbin/ifconfig wlan0mon up
+ExecStartPre=/etc/wisebox/wisebox-set-channel
+ExecStart=/usr/local/bin/wisebox-logger.py --config /etc/wisebox/wisebox.yml
+ExecStopPost=/sbin/ifconfig wlan0mon down
+ExecStopPost=/sbin/iw dev wlan0mon del
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

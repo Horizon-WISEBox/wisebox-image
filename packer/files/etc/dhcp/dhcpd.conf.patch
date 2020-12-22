@@ -1,0 +1,24 @@
+--- dhcpd.conf	2018-12-11 03:55:12.000000000 +0000
++++ dhcpd.conf.new	2020-12-22 14:43:34.626190421 +0000
+@@ -4,8 +4,8 @@
+ #
+
+ # option definitions common to all supported networks...
+-option domain-name "example.org";
+-option domain-name-servers ns1.example.org, ns2.example.org;
++option domain-name "wisebox.horizon.ac.uk";
++option domain-name-servers 208.67.222.222, 208.67.220.220;
+
+ default-lease-time 600;
+ max-lease-time 7200;
+@@ -105,3 +105,10 @@
+ #    range 10.0.29.10 10.0.29.230;
+ #  }
+ #}
++
++subnet 192.168.9.0 netmask 255.255.255.0 {
++  range 192.168.9.10 192.168.9.40;
++  option routers 192.168.9.1;
++  option broadcast-address 192.168.9.254;
++}
++

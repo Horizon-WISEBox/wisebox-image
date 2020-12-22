@@ -1,0 +1,17 @@
+[Unit]
+Description=bt-pan service
+After=bluetooth.service
+After=network-online.target
+Requires=bluetooth.service
+Requires=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/bt-pan server pan0
+ExecStartPost=/bin/hciconfig hci0 lm master,accept
+ExecStartPost=/sbin/ip link set pan0 up
+ExecStartPost=/bin/hciconfig hci0 sspmode 0
+ExecStartPost=/bin/hciconfig hci0 piscan
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

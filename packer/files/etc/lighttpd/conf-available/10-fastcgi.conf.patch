@@ -1,0 +1,29 @@
+--- 10-fastcgi.conf	2019-09-27 14:54:31.000000000 +0100
++++ 10-fastcgi.conf.new	2020-12-20 22:08:23.433594045 +0000
+@@ -1,4 +1,25 @@
+ # /usr/share/doc/lighttpd/fastcgi.txt.gz
+ # http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ConfigurationOptions#mod_fastcgi-fastcgi
+
+-server.modules += ( "mod_fastcgi" )
++server.modules	+= ( "mod_fastcgi" )
++server.modules	+= ( "mod_rewrite" )
++
++fastcgi.server = ( "/server.py" =>
++(( "socket" => "/tmp/fastcgi.socket",
++   "bin-path" =>
++    "/var/www/web.py/server.py  --config /etc/wisebox/wisebox.yml",
++   "max-procs" => 1,
++   "bin-environment" => (
++     "REAL_SCRIPT_NAME" => ""
++   ),
++   "check-local" => "disable"
++))
++)
++
++url.rewrite-once = (
++  "^/favicon.ico$" => "/favicon.ico",
++  "^/humans.txt$" => "/humans.txt",
++  "^/static/(.*)$" => "/static/$1",
++  "^/(.*)$" => "/server.py/$1",
++)
++

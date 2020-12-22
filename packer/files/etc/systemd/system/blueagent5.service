@@ -1,0 +1,13 @@
+[Unit]
+Description=BlueAgent5 service
+After=bluetooth.service
+After=network-online.target
+Requires=bluetooth.service
+Requires=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/blueagent5 --config-file /etc/wisebox/wisebox.yml
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

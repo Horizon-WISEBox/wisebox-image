@@ -1,0 +1,8 @@
+auto pan0
+iface pan0 inet static
+  address 192.168.9.1
+  netmask 255.255.255.0
+  broadcast 192.168.9.254
+  bridge_ports none
+  bridge_fd 0
+  bridge_stp off

@@ -1,0 +1,23 @@
+--- main.conf   2020-07-29 09:30:23.000000000 +0100
++++ main.conf.new       2020-12-20 21:34:33.577057290 +0000
+@@ -7,17 +7,17 @@
+
+ # Default device class. Only the major and minor device class bits are
+ # considered. Defaults to '0x000000'.
+-#Class = 0x000100
++Class = 0x020104
+
+ # How long to stay in discoverable mode before going back to non-discoverable
+ # The value is in seconds. Default is 180, i.e. 3 minutes.
+ # 0 = disable timer, i.e. stay discoverable forever
+-#DiscoverableTimeout = 0
++DiscoverableTimeout = 0
+
+ # How long to stay in pairable mode before going back to non-discoverable
+ # The value is in seconds. Default is 0.
+ # 0 = disable timer, i.e. stay pairable forever
+-#PairableTimeout = 0
++PairableTimeout = 0
+
+ # Use vendor id source (assigner), vendor, product and version information for
+ # DID profile support. The values are separated by ":" and assigner, VID, PID

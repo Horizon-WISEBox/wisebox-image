@@ -1,0 +1,28 @@
+--- hwclock-set 2019-01-10 08:30:43.000000000 +0000
++++ hwclock-set.new     2020-12-18 16:58:02.152661811 +0000
+@@ -4,9 +4,9 @@
+
+ dev=$1
+
+-if [ -e /run/systemd/system ] ; then
+-    exit 0
+-fi
++#if [ -e /run/systemd/system ] ; then
++#    exit 0
++#fi
+
+ if [ -e /run/udev/hwclock-set ]; then
+     exit 0
+@@ -26,10 +26,10 @@
+ fi
+
+ if [ yes = "$BADYEAR" ] ; then
+-    /sbin/hwclock --rtc=$dev --systz --badyear
++#    /sbin/hwclock --rtc=$dev --systz --badyear
+     /sbin/hwclock --rtc=$dev --hctosys --badyear
+ else
+-    /sbin/hwclock --rtc=$dev --systz
++#    /sbin/hwclock --rtc=$dev --systz
+     /sbin/hwclock --rtc=$dev --hctosys
+ fi
+

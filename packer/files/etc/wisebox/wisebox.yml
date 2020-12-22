@@ -1,0 +1,20 @@
+interface: wlan0mon
+channel: 1
+bucket:
+  interval: 5
+log:
+  dir: /var/log/wisebox-logger
+  rollover:
+    time: 1440
+upload:
+  enabled: false
+  url: https://wisebox.horizon.ac.uk/data-server
+  api_key:
+  retry_interval: 10
+  keep_logs: false
+inactivity:
+  enabled: true
+  interval: 120
+  action: /sbin/reboot
+bluetooth:
+  pin: 0000

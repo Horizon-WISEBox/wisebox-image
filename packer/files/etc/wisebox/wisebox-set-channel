@@ -1,0 +1,12 @@
+#!/bin/bash
+
+read -r -d '' code <<- EOD
+import yaml
+d = yaml.full_load(open('/etc/wisebox/wisebox.yml'))
+c = 0x1000 + d['channel']
+print(f'0x{c:x}')
+EOD
+
+chanspec=$(/usr/bin/python3.7 -c "$code")
+
+/usr/bin/nexutil -i --chanspec=${chanspec}
