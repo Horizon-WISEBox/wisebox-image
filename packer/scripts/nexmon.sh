@@ -4,6 +4,7 @@ set -e
 APT_MIRROR="http://archive.raspberrypi.org"
 NEXMON_COMMIT_HASH=5dbcbe524faaaa4866f8eaedf6345d2b7a82965b
 
+apt-mark hold raspberrypi-kernel firmware-brcm80211
 apt-get update
 apt-get install -y \
     autoconf \
