@@ -129,21 +129,16 @@ bus = None
 if __name__ == "__main__":
     pin_code = "0000"
     parser = OptionParser()
-    parser.add_option("-p", "--pin", action="store", dest="pin_code", help="PIN code to pair with", metavar="PIN")
     parser.add_option('-f', '--config-file', action='store', dest='config_file',
         help='File to read config from')
     (options, args) = parser.parse_args()
 
     try:
       if options.config_file:
-        d = yaml.full_load(open('/etc/wisebox/wisebox.yml'))
-        pin_code = d['bluetooth']['pin']
+        d = yaml.full_load(open(options.config_file))
+        pin_code = str(d['bluetooth']['pin'])
     except:
       pass
-
-    # use the pin code if provided
-    if (options.pin_code):
-        pin_code = options.pin_code
 
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
 
