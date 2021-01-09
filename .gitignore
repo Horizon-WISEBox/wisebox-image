@@ -1,2 +1,3 @@
 .vagrant*
 .vscode
+packer/files/etc/wisebox/wisebox.override.yml
